@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  php-app:
+    build: .
+    container_name: php-app
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    command: ["php", "run.php"]
