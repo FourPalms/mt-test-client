@@ -18,9 +18,5 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 # Copy the application files
 COPY . .
 
-# Install PHP dependencies
-RUN composer update
-RUN composer install
-
 # Set the entrypoint to the PHP script
-ENTRYPOINT ["php", "run.php"]
+#ENTRYPOINT ["php"]

@@ -8,4 +8,4 @@ services:
       - .env
     volumes:
       - .:/app
-    command: ["php", "run.php"]
+      - ./vendor:/app/vendor
