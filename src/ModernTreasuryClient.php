@@ -202,4 +202,166 @@ class ModernTreasuryClient
     {
         return $this->request('DELETE', "payment_orders/{$id}");
     }
+
+	// INTERNAL ACCOUNTS
+
+	/**
+ 	 * Create an internal account.
+ 	 *
+ 	 * @param array $data The internal account data.
+ 	 * @return array The created internal account.
+ 	 *
+ 	 * @OA\Post(
+ 	 *     path="/internal_accounts",
+ 	 *     summary="Create an internal account",
+ 	 *     @OA\RequestBody(
+ 	 *         required=true,
+ 	 *         @OA\JsonContent(ref="#/components/schemas/InternalAccountData")
+ 	 *     ),
+ 	 *     @OA\Response(
+ 	 *         response=200,
+ 	 *         description="Successful operation",
+ 	 *         @OA\JsonContent(ref="#/components/schemas/InternalAccount")
+ 	 *     )
+ 	 * )
+ 	 */
+	public function createInternalAccount(array $data)
+	{
+    	return $this->request('POST', 'internal_accounts', [
+        	'json' => $data,
+    	]);
+	}
+
+	/**
+ 	 * List all internal accounts.
+ 	 *
+ 	 * @param array $params Query parameters.
+ 	 * @return array The list of internal accounts.
+ 	 *
+ 	 * @OA\Get(
+ 	 *     path="/internal_accounts",
+ 	 *     summary="List all internal accounts",
+ 	 *     @OA\Parameter(
+ 	 *         name="currency",
+ 	 *         in="query",
+ 	 *         required=false,
+ 	 *         @OA\Schema(type="string")
+ 	 *     ),
+ 	 *     @OA\Parameter(
+ 	 *         name="payment_type",
+ 	 *         in="query",
+ 	 *         required=false,
+ 	 *         @OA\Schema(type="string")
+ 	 *     ),
+ 	 *     @OA\Parameter(
+ 	 *         name="payment_direction",
+ 	 *         in="query",
+ 	 *         required=false,
+ 	 *         @OA\Schema(type="string")
+ 	 *     ),
+ 	 *     @OA\Parameter(
+ 	 *         name="after_cursor",
+ 	 *         in="query",
+ 	 *         required=false,
+ 	 *         @OA\Schema(type="string")
+ 	 *     ),
+ 	 *     @OA\Parameter(
+ 	 *         name="per_page",
+ 	 *         in="query",
+ 	 *         required=false,
+ 	 *         @OA\Schema(type="integer", default=25)
+ 	 *     ),
+ 	 *     @OA\Parameter(
+ 	 *         name="metadata",
+ 	 *         in="query",
+ 	 *         required=false,
+ 	 *         @OA\Schema(type="string")
+ 	 *     ),
+ 	 *     @OA\Parameter(
+ 	 *         name="counterparty_id",
+ 	 *         in="query",
+ 	 *         required=false,
+ 	 *         @OA\Schema(type="string")
+ 	 *     ),
+ 	 *     @OA\Parameter(
+ 	 *         name="legal_entity_id",
+ 	 *         in="query",
+ 	 *         required=false,
+ 	 *         @OA\Schema(type="string")
+ 	 *     ),
+ 	 *     @OA\Response(
+ 	 *         response=200,
+ 	 *         description="Successful operation",
+ 	 *         @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/InternalAccount"))
+ 	 *     )
+ 	 * )
+ 	 */
+	public function listInternalAccounts(array $params = [])
+	{
+    	return $this->request('GET', 'internal_accounts', [
+        	'query' => $params,
+    	]);
+	}
+
+	/**
+ 	 * Get an internal account by ID.
+ 	 *
+ 	 * @param string $id The internal account ID.
+ 	 * @return array The internal account data.
+ 	 *
+ 	 * @OA\Get(
+ 	 *     path="/internal_accounts/{id}",
+ 	 *     summary="Get an internal account by ID",
+ 	 *     @OA\Parameter(
+ 	 *         name="id",
+ 	 *         in="path",
+ 	 *         required=true,
+ 	 *         @OA\Schema(type="string")
+ 	 *     ),
+ 	 *     @OA\Response(
+ 	 *         response=200,
+ 	 *         description="Successful operation",
+ 	 *         @OA\JsonContent(ref="#/components/schemas/InternalAccount")
+ 	 *     )
+ 	 * )
+ 	 */
+	public function getInternalAccount($id)
+	{
+    	return $this->request('GET', "internal_accounts/{$id}");
+	}
+
+	/**
+ 	 * Update an internal account by ID.
+ 	 *
+ 	 * @param string $id The internal account ID.
+ 	 * @param array $data The internal account data.
+ 	 * @return array The updated internal account.
+ 	 *
+ 	 * @OA\Patch(
+ 	 *     path="/internal_accounts/{id}",
+ 	 *     summary="Update an internal account by ID",
+ 	 *     @OA\Parameter(
+ 	 *         name="id",
+ 	 *         in="path",
+ 	 *         required=true,
+ 	 *         @OA\Schema(type="string")
+ 	 *     ),
+ 	 *     @OA\RequestBody(
+ 	 *         required=true,
+ 	 *         @OA\JsonContent(ref="#/components/schemas/InternalAccountData")
+ 	 *     ),
+ 	 *     @OA\Response(
+ 	 *         response=200,
+ 	 *         description="Successful operation",
+ 	 *         @OA\JsonContent(ref="#/components/schemas/InternalAccount")
+ 	 *     )
+ 	 * )
+ 	 */
+	public function updateInternalAccount($id, array $data)
+	{
+    	return $this->request('PATCH', "internal_accounts/{$id}", [
+        	'json' => $data,
+    	]);
+	}
+
 }

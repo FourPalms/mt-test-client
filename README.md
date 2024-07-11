@@ -32,32 +32,3 @@ This project provides a PHP client for interacting with the Modern Treasury API.
 
 The `Makefile` provides targets for each of the client commands. You can run these commands using the `make` command.
 
-### Create a Payment Order
-
-To create a payment order, use the `create` target:
-
-   `make create amount=1000 currency=USD direction=credit type=ach originating_account_id=orig_account receiving_account_id=receiving_account description="payment"`
-
-### Get a Payment Order by ID
-
-To get a payment order by ID, use the `get` target:
-
-   `make get id=payment_order_id_here`
-
-### List All Payment Orders
-
-To list all payment orders, use the `list` target:
-
-   `make list`
-
-### Update a Payment Order by ID
-
-To update a payment order by ID, use the `update` target:
-
-   `make update id=payment_order_id_here amount=1000 currency=USD direction=credit type=ach originating_account_id=orig_account receiving_account_id=receiving_account description="Updated payment description"`
-
-### Delete a Payment Order by ID
-
-To delete a payment order by ID, use the `delete` target:
-
-   `make delete id=payment_order_id_here`
